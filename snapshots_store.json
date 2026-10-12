@@ -1,0 +1,590 @@
+[
+  {
+    "id": "snap-1791786811791-74oo",
+    "versionLabel": "v1.0",
+    "projectName": "Shop Architecture",
+    "createdAt": "2026-10-12T06:33:31.791Z",
+    "sessionId": "analysis-1791786811761-2qbbh",
+    "session": {
+      "id": "analysis-1791786811761-2qbbh",
+      "projectName": "Shop Architecture",
+      "description": "",
+      "createdAt": "2026-10-12T06:33:31.761Z",
+      "modelUsed": "models/gemma-4-26b-a4b-it",
+      "diagramImage": {
+        "mimeType": "image/jpeg",
+        "base64": "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=",
+        "fileName": "diag_v1.jpg",
+        "sizeBytes": 134
+      },
+      "diagramExtraction": {
+        "title": "Architecture System",
+        "summary": "The provided image is a solid grey square and does not contain any software architecture diagram or information.",
+        "components": [],
+        "connections": [],
+        "ambiguities": [
+          "The image is a solid grey square and contains no visual elements, components, or labels."
+        ]
+      },
+      "projectEvidence": {
+        "fileInventory": [
+          "package.json",
+          "orders.ts"
+        ],
+        "dependencies": {
+          "express": "^4.18.2",
+          "@aws-sdk/client-s3": "^3.500.0"
+        },
+        "devDependencies": {},
+        "routes": [
+          {
+            "method": "GET",
+            "path": "/api/order",
+            "filePath": "orders.ts",
+            "lineNumber": 1,
+            "handlerSnippet": "import express from \"express\"; const app = express(); app.get(\"/api/order\", (req, res) => res.json([])); export default app;"
+          }
+        ],
+        "outboundCalls": [],
+        "databases": [],
+        "dockerServices": [],
+        "entryPoints": [],
+        "rawFilesSnippet": {
+          "package.json": "{\"name\":\"shop-backend\",\"dependencies\":{\"express\":\"^4.18.2\",\"@aws-sdk/client-s3\":\"^3.500.0\"}}",
+          "orders.ts": "import express from \"express\"; const app = express(); app.get(\"/api/order\", (req, res) => res.json([])); export default app;"
+        }
+      },
+      "findings": [
+        {
+          "id": "det-dep-@aws-sdk/client-s3",
+          "title": "Implementation contains AWS S3 / Object Storage not represented in architecture diagram",
+          "category": "unexpected_external_dependency",
+          "severity": "warning",
+          "confidence": "high",
+          "userStatus": "real_issue",
+          "explanation": "Your code uses \"@aws-sdk/client-s3\", but it is not shown in the diagram. Check whether this external service should be added to the design.",
+          "connectionTrace": {
+            "toComponentName": "AWS S3 / Object Storage",
+            "expectedConnection": "Unrepresented in diagram",
+            "foundEvidence": "Dependency \"@aws-sdk/client-s3\": \"^3.500.0\" in package.json",
+            "isConnectionHighlighted": false
+          },
+          "diagramEvidence": {
+            "label": "No corresponding component box in diagram",
+            "visualNote": "Neither AWS S3 / Object Storage nor @aws-sdk/client-s3 appear in the visual diagram elements."
+          },
+          "implementationEvidence": {
+            "summary": "Declared dependency \"@aws-sdk/client-s3\": \"^3.500.0\" in package.json",
+            "references": [
+              {
+                "filePath": "package.json",
+                "snippet": "\"@aws-sdk/client-s3\": \"^3.500.0\""
+              }
+            ]
+          },
+          "suggestedVerificationStep": "Update the architecture diagram to include AWS S3 / Object Storage as an external service or message queue dependency."
+        },
+        {
+          "id": "finding-1",
+          "title": "Implementation contains components and dependencies not represented in the diagram",
+          "category": "implementation_component_not_in_diagram",
+          "severity": "warning",
+          "confidence": "high",
+          "explanation": "The implementation includes an Express web server, AWS S3 client integration, and a specific API route (/api/order), but the provided diagram contains no components, dependencies, or architectural structures to represent these elements.",
+          "diagramEvidence": {
+            "componentName": null,
+            "relationship": null,
+            "label": null,
+            "visualNote": "The image is a solid grey square and contains no visual elements, components, or labels."
+          },
+          "implementationEvidence": {
+            "summary": "Detected Express and @aws-sdk/client-s3 in dependencies, and a GET route in orders.ts.",
+            "references": [
+              {
+                "filePath": "package.json",
+                "lineNumber": null,
+                "snippet": "express, @aws-sdk/client-s3"
+              },
+              {
+                "filePath": "orders.ts",
+                "lineNumber": 1,
+                "snippet": "GET /api/order"
+              }
+            ]
+          },
+          "suggestedVerificationStep": "Update the architecture diagram to include the web server (Express), cloud storage integration (AWS S3), and the API endpoint structure.",
+          "userStatus": "unresolved"
+        },
+        {
+          "id": "finding-2",
+          "title": "Architecture diagram provides no information for comparison",
+          "category": "ambiguous_or_inconclusive",
+          "severity": "critical",
+          "confidence": "high",
+          "explanation": "The provided diagram is a solid grey square with no visual elements, components, or labels. As a result, a consistency check against the implementation cannot be performed effectively.",
+          "diagramEvidence": {
+            "componentName": null,
+            "relationship": null,
+            "label": null,
+            "visualNote": "The image is a solid grey square and contains no visual elements, components, or labels."
+          },
+          "implementationEvidence": {
+            "summary": "The diagram lacks any architectural definitions to compare against the provided code.",
+            "references": []
+          },
+          "suggestedVerificationStep": "Ensure that a valid architecture diagram containing components and connections is uploaded for the consistency check.",
+          "userStatus": "unresolved"
+        }
+      ],
+      "summary": {
+        "totalFindings": 3,
+        "confirmedMismatches": 3,
+        "unverifiedOrInconclusive": 0,
+        "analyzedFilesCount": 2
+      }
+    }
+  },
+  {
+    "id": "snap-1791786878037-qvup",
+    "versionLabel": "v2.0",
+    "projectName": "Shop Architecture",
+    "createdAt": "2026-10-12T06:34:38.037Z",
+    "sessionId": "analysis-1791786878030-hqxgm",
+    "session": {
+      "id": "analysis-1791786878030-hqxgm",
+      "projectName": "Shop Architecture",
+      "description": "",
+      "createdAt": "2026-10-12T06:34:38.030Z",
+      "modelUsed": "models/gemma-4-26b-a4b-it",
+      "diagramImage": {
+        "mimeType": "image/jpeg",
+        "base64": "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=",
+        "fileName": "diag_v2.jpg",
+        "sizeBytes": 134
+      },
+      "diagramExtraction": {
+        "title": "Architecture System",
+        "summary": "The provided image is a solid gray square and does not contain any software architecture diagram or visual information.",
+        "components": [],
+        "connections": [],
+        "ambiguities": [
+          "The image is a solid gray square and contains no architectural components, connections, or text."
+        ]
+      },
+      "projectEvidence": {
+        "fileInventory": [
+          "package.json",
+          "orders.ts"
+        ],
+        "dependencies": {
+          "express": "^4.18.2",
+          "stripe": "^14.0.0"
+        },
+        "devDependencies": {},
+        "routes": [
+          {
+            "method": "GET",
+            "path": "/api/orders",
+            "filePath": "orders.ts",
+            "lineNumber": 1,
+            "handlerSnippet": "import express from \"express\"; const app = express(); app.get(\"/api/orders\", (req, res) => res.json([])); export default app;"
+          }
+        ],
+        "outboundCalls": [],
+        "databases": [],
+        "dockerServices": [],
+        "entryPoints": [],
+        "rawFilesSnippet": {
+          "package.json": "{\"name\":\"shop-backend\",\"dependencies\":{\"express\":\"^4.18.2\",\"stripe\":\"^14.0.0\"}}",
+          "orders.ts": "import express from \"express\"; const app = express(); app.get(\"/api/orders\", (req, res) => res.json([])); export default app;"
+        }
+      },
+      "findings": [
+        {
+          "id": "det-dep-stripe",
+          "title": "Implementation contains Stripe Payment Gateway not represented in architecture diagram",
+          "category": "implementation_component_not_in_diagram",
+          "severity": "warning",
+          "confidence": "high",
+          "userStatus": "unresolved",
+          "explanation": "Your code uses \"stripe\", but it is not shown in the diagram. Check whether this external service should be added to the design.",
+          "connectionTrace": {
+            "toComponentName": "Stripe Payment Gateway",
+            "expectedConnection": "Unrepresented in diagram",
+            "foundEvidence": "Dependency \"stripe\": \"^14.0.0\" in package.json",
+            "isConnectionHighlighted": false
+          },
+          "diagramEvidence": {
+            "label": "No corresponding component box in diagram",
+            "visualNote": "Neither Stripe Payment Gateway nor stripe appear in the visual diagram elements."
+          },
+          "implementationEvidence": {
+            "summary": "Declared dependency \"stripe\": \"^14.0.0\" in package.json",
+            "references": [
+              {
+                "filePath": "package.json",
+                "snippet": "\"stripe\": \"^14.0.0\""
+              }
+            ]
+          },
+          "suggestedVerificationStep": "Update the architecture diagram to include Stripe Payment Gateway as an external service or message queue dependency."
+        },
+        {
+          "id": "finding-1",
+          "title": "Core application components and routes are missing from the diagram",
+          "category": "implementation_component_not_in_diagram",
+          "severity": "critical",
+          "confidence": "high",
+          "explanation": "The implementation includes a functional API route (`GET /api/orders`) defined in `orders.ts`, but the provided diagram is a blank gray square and does not represent any application logic, services, or endpoints.",
+          "diagramEvidence": {
+            "componentName": null,
+            "relationship": null,
+            "label": null,
+            "visualNote": "The image is a solid gray square and contains no architectural components."
+          },
+          "implementationEvidence": {
+            "summary": "An API route is declared in the source code which is entirely unrepresented in the diagram.",
+            "references": [
+              {
+                "filePath": "orders.ts",
+                "lineNumber": 1,
+                "snippet": "GET /api/orders"
+              }
+            ]
+          },
+          "suggestedVerificationStep": "Update the architecture diagram to include the API server component and the specific endpoints being served.",
+          "userStatus": "unresolved"
+        },
+        {
+          "id": "finding-2",
+          "title": "External dependencies 'express' and 'stripe' are not represented",
+          "category": "unexpected_external_dependency",
+          "severity": "info",
+          "confidence": "high",
+          "explanation": "The project lists 'express' and 'stripe' as dependencies in `package.json`, indicating integration with a web framework and a payment provider, but neither are depicted in the architecture diagram.",
+          "diagramEvidence": {
+            "componentName": null,
+            "relationship": null,
+            "label": null,
+            "visualNote": "No external services or libraries are visualized."
+          },
+          "implementationEvidence": {
+            "summary": "Dependencies 'express' and 'stripe' are declared in the project configuration file.",
+            "references": [
+              {
+                "filePath": "package.json",
+                "lineNumber": 0,
+                "snippet": "dependencies: ['express', 'stripe']"
+              }
+            ]
+          },
+          "suggestedVerificationStep": "Add the external dependencies (Express framework and Stripe API) to the architecture diagram to reflect the actual technology stack.",
+          "userStatus": "unresolved"
+        },
+        {
+          "id": "det-amb-1",
+          "title": "Visual diagram ambiguity: The image is a solid gray square and contains no architectur",
+          "category": "ambiguous_or_inconclusive",
+          "severity": "inconclusive",
+          "confidence": "inconclusive",
+          "userStatus": "unresolved",
+          "explanation": "The image is a solid gray square and contains no architectural components, connections, or text.",
+          "diagramEvidence": {
+            "visualNote": "The image is a solid gray square and contains no architectural components, connections, or text."
+          },
+          "implementationEvidence": {
+            "summary": "Inconclusive visual evidence prevents definitive code matching.",
+            "references": []
+          },
+          "suggestedVerificationStep": "Review the original diagram source to clarify indistinct labels or connections."
+        }
+      ],
+      "summary": {
+        "totalFindings": 4,
+        "confirmedMismatches": 2,
+        "unverifiedOrInconclusive": 1,
+        "analyzedFilesCount": 2
+      }
+    }
+  },
+  {
+    "id": "snap-1791786947374-26zy",
+    "versionLabel": "v2.0",
+    "projectName": "Shop Architecture",
+    "createdAt": "2026-10-12T06:35:47.374Z",
+    "sessionId": "analysis-1791786947354-uky7i",
+    "session": {
+      "id": "analysis-1791786947354-uky7i",
+      "projectName": "Shop Architecture",
+      "description": "",
+      "createdAt": "2026-10-12T06:35:47.354Z",
+      "modelUsed": "models/gemma-4-26b-a4b-it",
+      "diagramImage": {
+        "mimeType": "image/jpeg",
+        "base64": "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=",
+        "fileName": "diag_v2.jpg",
+        "sizeBytes": 134
+      },
+      "diagramExtraction": {
+        "title": "Architecture System",
+        "summary": "The provided image is a solid grey square and does not contain any architectural diagram or information.",
+        "components": [],
+        "connections": [],
+        "ambiguities": [
+          "The image is a solid grey color and contains no visible architectural components, text, arrows, or boundaries."
+        ]
+      },
+      "projectEvidence": {
+        "fileInventory": [
+          "package.json",
+          "orders.ts"
+        ],
+        "dependencies": {
+          "express": "^4.18.2",
+          "stripe": "^14.0.0"
+        },
+        "devDependencies": {},
+        "routes": [
+          {
+            "method": "GET",
+            "path": "/api/orders",
+            "filePath": "orders.ts",
+            "lineNumber": 1,
+            "handlerSnippet": "import express from \"express\"; const app = express(); app.get(\"/api/orders\", (req, res) => res.json([])); export default app;"
+          }
+        ],
+        "outboundCalls": [],
+        "databases": [],
+        "dockerServices": [],
+        "entryPoints": [],
+        "rawFilesSnippet": {
+          "package.json": "{\"name\":\"shop-backend\",\"dependencies\":{\"express\":\"^4.18.2\",\"stripe\":\"^14.0.0\"}}",
+          "orders.ts": "import express from \"express\"; const app = express(); app.get(\"/api/orders\", (req, res) => res.json([])); export default app;"
+        }
+      },
+      "findings": [
+        {
+          "id": "det-dep-stripe",
+          "title": "Implementation contains Stripe Payment Gateway not represented in architecture diagram",
+          "category": "implementation_component_not_in_diagram",
+          "severity": "warning",
+          "confidence": "high",
+          "userStatus": "unresolved",
+          "explanation": "Your code uses \"stripe\", but it is not shown in the diagram. Check whether this external service should be added to the design.",
+          "connectionTrace": {
+            "toComponentName": "Stripe Payment Gateway",
+            "expectedConnection": "Unrepresented in diagram",
+            "foundEvidence": "Dependency \"stripe\": \"^14.0.0\" in package.json",
+            "isConnectionHighlighted": false
+          },
+          "diagramEvidence": {
+            "label": "No corresponding component box in diagram",
+            "visualNote": "Neither Stripe Payment Gateway nor stripe appear in the visual diagram elements."
+          },
+          "implementationEvidence": {
+            "summary": "Declared dependency \"stripe\": \"^14.0.0\" in package.json",
+            "references": [
+              {
+                "filePath": "package.json",
+                "snippet": "\"stripe\": \"^14.0.0\""
+              }
+            ]
+          },
+          "suggestedVerificationStep": "Update the architecture diagram to include Stripe Payment Gateway as an external service or message queue dependency."
+        },
+        {
+          "id": "finding-1",
+          "title": "Implementation components unrepresented in architecture diagram",
+          "category": "implementation_component_not_in_diagram",
+          "severity": "warning",
+          "confidence": "high",
+          "explanation": "The implementation contains functional logic and external dependencies (Express, Stripe, and an Order API route) that are not represented in the provided architecture diagram, which is a solid grey square.",
+          "diagramEvidence": {
+            "componentName": null,
+            "relationship": null,
+            "label": null,
+            "visualNote": "The image is a solid grey square and contains no architectural components, text, arrows, or boundaries."
+          },
+          "implementationEvidence": {
+            "summary": "The implementation includes 'express' and 'stripe' as dependencies and defines a GET route at '/api/orders'.",
+            "references": [
+              {
+                "filePath": "package.json",
+                "lineNumber": 0,
+                "snippet": "dependencies: [express, stripe]"
+              },
+              {
+                "filePath": "orders.ts",
+                "lineNumber": 1,
+                "snippet": "GET /api/orders"
+              }
+            ]
+          },
+          "suggestedVerificationStep": "Provide a valid architectural diagram that illustrates the system's components, specifically including the web server framework, the payment gateway integration (Stripe), and the API service boundaries.",
+          "userStatus": "unresolved"
+        },
+        {
+          "id": "det-amb-1",
+          "title": "Visual diagram ambiguity: The image is a solid grey color and contains no visible arch",
+          "category": "ambiguous_or_inconclusive",
+          "severity": "inconclusive",
+          "confidence": "inconclusive",
+          "userStatus": "unresolved",
+          "explanation": "The image is a solid grey color and contains no visible architectural components, text, arrows, or boundaries.",
+          "diagramEvidence": {
+            "visualNote": "The image is a solid grey color and contains no visible architectural components, text, arrows, or boundaries."
+          },
+          "implementationEvidence": {
+            "summary": "Inconclusive visual evidence prevents definitive code matching.",
+            "references": []
+          },
+          "suggestedVerificationStep": "Review the original diagram source to clarify indistinct labels or connections."
+        }
+      ],
+      "summary": {
+        "totalFindings": 3,
+        "confirmedMismatches": 2,
+        "unverifiedOrInconclusive": 1,
+        "analyzedFilesCount": 2
+      }
+    }
+  },
+  {
+    "id": "snap-1791787172410-v3pq",
+    "versionLabel": "v1.0",
+    "projectName": "Shop System",
+    "createdAt": "2026-10-12T06:39:32.410Z",
+    "sessionId": "analysis-1791787159876-qspod",
+    "session": {
+      "id": "analysis-1791787159876-qspod",
+      "projectName": "Shop System",
+      "description": "",
+      "createdAt": "2026-10-12T06:39:19.876Z",
+      "modelUsed": "models/gemma-4-26b-a4b-it",
+      "diagramImage": {
+        "mimeType": "image/jpeg",
+        "base64": "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=",
+        "fileName": "diag1.jpg",
+        "sizeBytes": 134
+      },
+      "diagramExtraction": {
+        "title": "Architecture System",
+        "summary": "The provided image is a solid gray square and does not contain any software architecture diagram.",
+        "components": [],
+        "connections": [],
+        "ambiguities": [
+          "The image contains no visible components, connections, or text; it is a solid gray square."
+        ]
+      },
+      "projectEvidence": {
+        "fileInventory": [
+          "package.json"
+        ],
+        "dependencies": {},
+        "devDependencies": {},
+        "routes": [],
+        "outboundCalls": [],
+        "databases": [],
+        "dockerServices": [],
+        "entryPoints": [],
+        "rawFilesSnippet": {
+          "package.json": "{}"
+        }
+      },
+      "findings": [
+        {
+          "id": "det-amb-1",
+          "title": "Visual diagram ambiguity: The image contains no visible components, connections, or te",
+          "category": "ambiguous_or_inconclusive",
+          "severity": "inconclusive",
+          "confidence": "inconclusive",
+          "userStatus": "real_issue",
+          "explanation": "The image contains no visible components, connections, or text; it is a solid gray square.",
+          "diagramEvidence": {
+            "visualNote": "The image contains no visible components, connections, or text; it is a solid gray square."
+          },
+          "implementationEvidence": {
+            "summary": "Inconclusive visual evidence prevents definitive code matching.",
+            "references": []
+          },
+          "suggestedVerificationStep": "Review the original diagram source to clarify indistinct labels or connections."
+        }
+      ],
+      "summary": {
+        "totalFindings": 1,
+        "confirmedMismatches": 0,
+        "unverifiedOrInconclusive": 1,
+        "analyzedFilesCount": 1
+      }
+    }
+  },
+  {
+    "id": "snap-1791787172417-afgn",
+    "versionLabel": "v2.0",
+    "projectName": "Shop System",
+    "createdAt": "2026-10-12T06:39:32.417Z",
+    "sessionId": "analysis-1791787159876-qspod",
+    "session": {
+      "id": "analysis-1791787159876-qspod",
+      "projectName": "Shop System",
+      "description": "",
+      "createdAt": "2026-10-12T06:39:19.876Z",
+      "modelUsed": "models/gemma-4-26b-a4b-it",
+      "diagramImage": {
+        "mimeType": "image/jpeg",
+        "base64": "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=",
+        "fileName": "diag1.jpg",
+        "sizeBytes": 134
+      },
+      "diagramExtraction": {
+        "title": "Architecture System",
+        "summary": "The provided image is a solid gray square and does not contain any software architecture diagram.",
+        "components": [],
+        "connections": [],
+        "ambiguities": [
+          "The image contains no visible components, connections, or text; it is a solid gray square."
+        ]
+      },
+      "projectEvidence": {
+        "fileInventory": [
+          "package.json"
+        ],
+        "dependencies": {},
+        "devDependencies": {},
+        "routes": [],
+        "outboundCalls": [],
+        "databases": [],
+        "dockerServices": [],
+        "entryPoints": [],
+        "rawFilesSnippet": {
+          "package.json": "{}"
+        }
+      },
+      "findings": [
+        {
+          "id": "det-amb-1",
+          "title": "Visual diagram ambiguity: The image contains no visible components, connections, or te",
+          "category": "ambiguous_or_inconclusive",
+          "severity": "inconclusive",
+          "confidence": "inconclusive",
+          "userStatus": "real_issue",
+          "explanation": "The image contains no visible components, connections, or text; it is a solid gray square.",
+          "diagramEvidence": {
+            "visualNote": "The image contains no visible components, connections, or text; it is a solid gray square."
+          },
+          "implementationEvidence": {
+            "summary": "Inconclusive visual evidence prevents definitive code matching.",
+            "references": []
+          },
+          "suggestedVerificationStep": "Review the original diagram source to clarify indistinct labels or connections."
+        }
+      ],
+      "summary": {
+        "totalFindings": 1,
+        "confirmedMismatches": 0,
+        "unverifiedOrInconclusive": 1,
+        "analyzedFilesCount": 1
+      }
+    }
+  }
+]
